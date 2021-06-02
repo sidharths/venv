@@ -114,6 +114,8 @@ dm-tree==0.1.6
     # via tensorflow-model-optimization
 docutils==0.15.2
     # via awscli
+et-xmlfile==1.1.0
+    # via openpyxl
 fastai==2.3.1
     # via -r requirements.in
 fastapi==0.65.1
@@ -362,6 +364,8 @@ opencv-python==4.5.2.52
     #   -r requirements.in
     #   gluoncv
     #   imgaug
+openpyxl==3.0.7
+    # via -r requirements.in
 opt-einsum==3.3.0
     # via tensorflow
 packaging==20.9
@@ -689,6 +693,8 @@ wheel==0.36.2
 wrapt==1.12.1
     # via tensorflow
 xgboost==1.4.2
+    # via -r requirements.in
+xlrd==2.0.1
     # via -r requirements.in
 yacs==0.1.8
     # via gluoncv
