@@ -63,3 +63,7 @@ Flask
 gunicorn
 
 autopep8
+
+
+
+qiskit
