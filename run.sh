@@ -12,6 +12,6 @@ pip install --upgrade pip
 # below needed for mujoco build
 pip install cython lockfile  wheel jupyter  ipykernel glfw imageio
 python -m ipykernel install --user --name=ref_error --display-name "Python3.8 (venv@ubuntu)"
-pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 torchtext==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-#pip-compile requirements.in
-pip install -r  requirements.txt
+
+pip-compile requirements.in
+pip install -r requirements.txt

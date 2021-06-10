@@ -3,6 +3,7 @@ tqdm
 joblib
 argparse
 psutil
+pycuda
 
 coremltools
 
@@ -12,8 +13,6 @@ pandas
 seaborn
 xlrd==1.2.0
 
-
-torchsummary
 xgboost
 scipy
 gluoncv
@@ -23,7 +22,15 @@ tensorflow==2.5.0
 tensorflow-model-optimization
 #gym[all]
 fastai
+fastbook
 
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.8.0+cu111
+torchvision==0.9.0+cu111
+torchaudio==0.8.0
+torchtext==0.9.0
+
+torch-summary
 
 rawpy
 albumentations

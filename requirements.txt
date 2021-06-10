@@ -4,12 +4,22 @@
 #
 #    pip-compile requirements.in
 #
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
 absl-py==0.12.0
     # via
     #   tensorboard
     #   tensorflow
-albumentations==0.5.2
+albumentations==1.0.0
     # via -r requirements.in
+anyio==3.1.0
+    # via httpcore
+appdirs==1.4.4
+    # via
+    #   pycuda
+    #   pytools
+argon2-cffi==20.1.0
+    # via notebook
 argparse==1.4.0
     # via -r requirements.in
 astunparse==1.6.3
@@ -22,30 +32,25 @@ attrs==21.2.0
     #   jsonschema
 autocfg==0.0.8
     # via gluoncv
-autogluon.core==0.2.0
-    # via gluoncv
-autograd==1.3
-    # via autogluon.core
 autopep8==1.5.7
     # via -r requirements.in
-awscli==1.19.84
+awscli==1.19.91
     # via -r requirements.in
+backcall==0.2.0
+    # via ipython
 backoff==1.10.0
     # via -r requirements.in
-bcrypt==3.2.0
-    # via paramiko
+bleach==3.3.0
+    # via nbconvert
 blis==0.7.4
     # via
     #   spacy
     #   thinc
-boto3==1.17.84
-    # via autogluon.core
 boto==2.49.0
     # via -r requirements.in
-botocore==1.20.84
+botocore==1.20.91
     # via
     #   awscli
-    #   boto3
     #   s3transfer
 cachecontrol==0.12.6
     # via firebase-admin
@@ -56,39 +61,29 @@ catalogue==2.0.4
     #   spacy
     #   srsly
     #   thinc
-certifi==2020.12.5
+certifi==2021.5.30
     # via
     #   httpx
     #   requests
 cffi==1.14.5
     # via
-    #   bcrypt
+    #   argon2-cffi
     #   cryptography
     #   google-crc32c
-    #   pynacl
 chardet==4.0.0
     # via requests
 click==7.1.2
     # via
-    #   distributed
     #   flask
     #   nltk
     #   sacremoses
     #   typer
-cloudpickle==1.6.0
-    # via
-    #   dask
-    #   distributed
 colorama==0.4.3
     # via awscli
-configspace==0.4.18
-    # via autogluon.core
 coremltools==4.1
     # via -r requirements.in
 cryptography==3.4.7
-    # via
-    #   paramiko
-    #   requests-ntlm
+    # via requests-ntlm
 cycler==0.10.0
     # via matplotlib
 cymem==2.0.5
@@ -96,27 +91,18 @@ cymem==2.0.5
     #   preshed
     #   spacy
     #   thinc
-cython==0.29.23
-    # via
-    #   autogluon.core
-    #   configspace
-dask==2021.5.1
-    # via
-    #   autogluon.core
-    #   distributed
 databases==0.4.3
     # via -r requirements.in
 decorator==4.4.2
-    # via networkx
-decord==0.5.2
-    # via gluoncv
+    # via
+    #   ipython
+    #   networkx
+defusedxml==0.7.1
+    # via nbconvert
 dill==0.3.3
     # via
-    #   autogluon.core
     #   qiskit-ibmq-provider
     #   qiskit-terra
-distributed==2021.5.1
-    # via autogluon.core
 dlx==1.0.4
     # via qiskit-aqua
 dm-tree==0.1.6
@@ -125,18 +111,30 @@ docplex==2.20.204
     # via qiskit-aqua
 docutils==0.15.2
     # via awscli
+entrypoints==0.3
+    # via nbconvert
 fastai==2.3.1
+    # via
+    #   -r requirements.in
+    #   fastbook
+fastapi==0.65.2
     # via -r requirements.in
-fastapi==0.65.1
+fastbook==0.0.16
     # via -r requirements.in
 fastcore==1.3.20
-    # via fastai
+    # via
+    #   fastai
+    #   fastrelease
+    #   ghapi
+    #   nbdev
 fastdtw==0.3.4
     # via qiskit-aqua
 fastjsonschema==2.15.1
     # via qiskit-terra
 fastprogress==1.0.0
     # via fastai
+fastrelease==0.1.11
+    # via nbdev
 filelock==3.0.12
     # via
     #   huggingface-hub
@@ -147,15 +145,15 @@ flask==2.0.1
     # via -r requirements.in
 flatbuffers==1.12
     # via tensorflow
-fsspec==2021.5.0
-    # via dask
-future==0.18.2
-    # via autograd
 gast==0.4.0
     # via tensorflow
-gluoncv==0.10.1.post0
+ghapi==0.1.17
+    # via
+    #   fastrelease
+    #   nbdev
+gluoncv==0.10.2.post0
     # via -r requirements.in
-google-api-core[grpc]==1.28.0
+google-api-core[grpc]==1.30.0
     # via
     #   firebase-admin
     #   google-api-python-client
@@ -165,7 +163,7 @@ google-api-core[grpc]==1.28.0
     #   google-cloud-firestore
     #   google-cloud-pubsub
     #   google-cloud-secret-manager
-google-api-python-client==2.6.0
+google-api-python-client==2.8.0
     # via firebase-admin
 google-auth-httplib2==0.1.0
     # via google-api-python-client
@@ -174,7 +172,7 @@ google-auth-oauthlib==0.4.4
     #   pandas-gbq
     #   pydata-google-auth
     #   tensorboard
-google-auth==1.30.1
+google-auth==1.31.0
     # via
     #   google-api-core
     #   google-api-python-client
@@ -187,7 +185,7 @@ google-auth==1.30.1
     #   tensorboard
 google-cloud-bigquery-storage==2.4.0
     # via google-cloud-bigquery
-google-cloud-bigquery[bqstorage,pandas]==2.17.0
+google-cloud-bigquery[bqstorage,pandas]==2.20.0
     # via
     #   -r requirements.in
     #   pandas-gbq
@@ -201,7 +199,7 @@ google-cloud-firestore==2.1.1
     # via firebase-admin
 google-cloud-pubsub==2.5.0
     # via -r requirements.in
-google-cloud-secret-manager==2.4.0
+google-cloud-secret-manager==2.5.0
     # via -r requirements.in
 google-cloud-storage==1.38.0
     # via
@@ -220,9 +218,7 @@ googleapis-common-protos[grpc]==1.53.0
     #   google-api-core
     #   grpc-google-iam-v1
 graphviz==0.8.4
-    # via
-    #   autogluon.core
-    #   mxnet-cu112
+    # via mxnet-cu112
 grpc-google-iam-v1==0.12.3
     # via
     #   google-cloud-pubsub
@@ -243,9 +239,7 @@ h5py==3.1.0
     # via
     #   qiskit-aqua
     #   tensorflow
-heapdict==1.0.1
-    # via zict
-httpcore==0.13.3
+httpcore==0.13.4
     # via httpx
 httplib2==0.19.1
     # via
@@ -257,6 +251,7 @@ huggingface-hub==0.0.8
     # via transformers
 idna==2.10
     # via
+    #   anyio
     #   requests
     #   rfc3986
 imageio==2.9.0
@@ -264,21 +259,44 @@ imageio==2.9.0
     #   imgaug
     #   scikit-image
 imgaug==0.4.0
-    # via
-    #   -r requirements.in
-    #   albumentations
+    # via -r requirements.in
 inflection==0.5.1
     # via quandl
+ipykernel==5.5.5
+    # via
+    #   ipywidgets
+    #   jupyter
+    #   jupyter-console
+    #   nbdev
+    #   notebook
+    #   qtconsole
+ipython-genutils==0.2.0
+    # via
+    #   nbformat
+    #   notebook
+    #   qtconsole
+    #   traitlets
+ipython==7.24.1
+    # via
+    #   ipykernel
+    #   ipywidgets
+    #   jupyter-console
+ipywidgets==7.6.3
+    # via
+    #   fastbook
+    #   jupyter
 itsdangerous==2.0.1
     # via flask
+jedi==0.18.0
+    # via ipython
 jinja2==3.0.1
     # via
     #   flask
+    #   nbconvert
+    #   notebook
     #   spacy
 jmespath==0.10.0
-    # via
-    #   boto3
-    #   botocore
+    # via botocore
 joblib==1.0.1
     # via
     #   -r requirements.in
@@ -286,7 +304,29 @@ joblib==1.0.1
     #   sacremoses
     #   scikit-learn
 jsonschema==3.2.0
-    # via qiskit-terra
+    # via
+    #   nbformat
+    #   qiskit-terra
+jupyter-client==6.1.12
+    # via
+    #   ipykernel
+    #   jupyter-console
+    #   nbdev
+    #   notebook
+    #   qtconsole
+jupyter-console==6.4.0
+    # via jupyter
+jupyter-core==4.7.1
+    # via
+    #   jupyter-client
+    #   nbconvert
+    #   nbformat
+    #   notebook
+    #   qtconsole
+jupyter==1.0.0
+    # via nbdev
+jupyterlab-widgets==1.0.0
+    # via ipywidgets
 keras-nightly==2.5.0.dev2021032900
     # via tensorflow
 keras-preprocessing==1.1.2
@@ -298,33 +338,36 @@ libcst==0.3.19
     #   google-cloud-bigquery-storage
     #   google-cloud-pubsub
     #   google-cloud-secret-manager
-locket==0.2.1
-    # via partd
 lockfile==0.12.2
     # via -r requirements.in
 lxml==4.6.3
     # via yfinance
+mako==1.1.4
+    # via pycuda
 markdown==3.3.4
     # via tensorboard
 markupsafe==2.0.1
-    # via jinja2
+    # via
+    #   jinja2
+    #   mako
+matplotlib-inline==0.1.2
+    # via ipython
 matplotlib==3.4.2
     # via
     #   -r requirements.in
-    #   autogluon.core
     #   fastai
     #   gluoncv
     #   imgaug
     #   scikit-image
     #   seaborn
+mistune==0.8.4
+    # via nbconvert
 more-itertools==8.8.0
     # via quandl
 mpmath==1.2.1
     # via sympy
 msgpack==1.0.2
-    # via
-    #   cachecontrol
-    #   distributed
+    # via cachecontrol
 multitasking==0.0.9
     # via yfinance
 murmurhash==1.0.5
@@ -336,24 +379,37 @@ mxnet-cu112==1.8.0.post0
     # via -r requirements.in
 mypy-extensions==0.4.3
     # via typing-inspect
+nbconvert==5.6.1
+    # via
+    #   jupyter
+    #   nbdev
+    #   notebook
+nbdev==1.1.14
+    # via fastbook
+nbformat==5.1.3
+    # via
+    #   ipywidgets
+    #   nbconvert
+    #   nbdev
+    #   notebook
 nest-asyncio==1.5.1
     # via qiskit-ibmq-provider
 networkx==2.5.1
     # via scikit-image
 nltk==3.6.2
     # via -r requirements.in
+notebook==6.4.0
+    # via
+    #   jupyter
+    #   widgetsnbextension
 ntlm-auth==1.5.0
     # via requests-ntlm
 numpy==1.19.5
     # via
     #   -r requirements.in
     #   albumentations
-    #   autogluon.core
-    #   autograd
     #   blis
-    #   configspace
     #   coremltools
-    #   decord
     #   fastdtw
     #   fastprogress
     #   gluoncv
@@ -368,6 +424,7 @@ numpy==1.19.5
     #   opt-einsum
     #   pandas
     #   pyarrow
+    #   pytools
     #   pywavelets
     #   qiskit-aer
     #   qiskit-aqua
@@ -383,21 +440,21 @@ numpy==1.19.5
     #   seaborn
     #   spacy
     #   tensorboard
-    #   tensorboardx
     #   tensorflow
     #   tensorflow-model-optimization
     #   thinc
     #   tifffile
     #   torch
+    #   torchtext
     #   torchvision
     #   transformers
     #   xgboost
     #   yfinance
-oauthlib==3.1.0
+oauthlib==3.1.1
     # via requests-oauthlib
-opencv-python-headless==4.5.2.52
+opencv-python-headless==4.5.2.54
     # via albumentations
-opencv-python==4.5.2.52
+opencv-python==4.5.2.54
     # via
     #   -r requirements.in
     #   gluoncv
@@ -406,11 +463,17 @@ opt-einsum==3.3.0
     # via tensorflow
 packaging==20.9
     # via
+    #   bleach
     #   coremltools
     #   fastai
+    #   fastbook
     #   fastcore
+    #   fastrelease
+    #   ghapi
     #   google-api-core
     #   google-cloud-bigquery
+    #   google-cloud-secret-manager
+    #   nbdev
     #   spacy
     #   transformers
 pandas-gbq==0.15.0
@@ -418,8 +481,8 @@ pandas-gbq==0.15.0
 pandas==1.2.3
     # via
     #   -r requirements.in
-    #   autogluon.core
     #   fastai
+    #   fastbook
     #   gluoncv
     #   google-cloud-bigquery
     #   pandas-gbq
@@ -427,12 +490,16 @@ pandas==1.2.3
     #   quandl
     #   seaborn
     #   yfinance
-paramiko==2.7.2
-    # via autogluon.core
-partd==1.2.0
-    # via dask
+pandocfilters==1.4.3
+    # via nbconvert
+parso==0.8.2
+    # via jedi
 pathy==0.5.2
     # via spacy
+pexpect==4.8.0
+    # via ipython
+pickleshare==0.7.5
+    # via ipython
 pillow==8.2.0
     # via
     #   -r requirements.in
@@ -451,6 +518,12 @@ preshed==3.0.5
     # via
     #   spacy
     #   thinc
+prometheus-client==0.11.0
+    # via notebook
+prompt-toolkit==3.0.18
+    # via
+    #   ipython
+    #   jupyter-console
 proto-plus==1.18.1
     # via
     #   google-cloud-bigquery
@@ -458,7 +531,7 @@ proto-plus==1.18.1
     #   google-cloud-firestore
     #   google-cloud-pubsub
     #   google-cloud-secret-manager
-protobuf==3.17.1
+protobuf==3.17.3
     # via
     #   coremltools
     #   google-api-core
@@ -466,15 +539,17 @@ protobuf==3.17.1
     #   googleapis-common-protos
     #   proto-plus
     #   tensorboard
-    #   tensorboardx
     #   tensorflow
 psutil==5.8.0
     # via
     #   -r requirements.in
-    #   distributed
     #   qiskit-aqua
     #   qiskit-terra
-pyarrow==4.0.0
+ptyprocess==0.7.0
+    # via
+    #   pexpect
+    #   terminado
+pyarrow==4.0.1
     # via google-cloud-bigquery
 pyasn1-modules==0.2.8
     # via google-auth
@@ -488,6 +563,8 @@ pycodestyle==2.7.0
     # via autopep8
 pycparser==2.20
     # via cffi
+pycuda==2021.1
+    # via -r requirements.in
 pydantic==1.7.4
     # via
     #   fastapi
@@ -495,11 +572,14 @@ pydantic==1.7.4
     #   thinc
 pydata-google-auth==1.2.0
     # via pandas-gbq
-pynacl==1.4.0
-    # via paramiko
+pygments==2.9.0
+    # via
+    #   ipython
+    #   jupyter-console
+    #   nbconvert
+    #   qtconsole
 pyparsing==2.4.7
     # via
-    #   configspace
     #   httplib2
     #   matplotlib
     #   packaging
@@ -510,6 +590,7 @@ python-constraint==1.4.0
 python-dateutil==2.8.1
     # via
     #   botocore
+    #   jupyter-client
     #   matplotlib
     #   pandas
     #   qiskit-ibmq-provider
@@ -517,6 +598,8 @@ python-dateutil==2.8.1
     #   quandl
 python-dotenv==0.17.1
     # via -r requirements.in
+pytools==2021.2.7
+    # via pycuda
 pytz==2021.1
     # via
     #   google-api-core
@@ -529,12 +612,17 @@ pyyaml==5.4.1
     #   albumentations
     #   autocfg
     #   awscli
-    #   dask
-    #   distributed
     #   fastai
+    #   fastrelease
     #   gluoncv
     #   libcst
+    #   nbdev
     #   yacs
+pyzmq==22.1.0
+    # via
+    #   jupyter-client
+    #   notebook
+    #   qtconsole
 qiskit-aer==0.8.2
     # via qiskit
 qiskit-aqua==0.9.1
@@ -554,6 +642,10 @@ qiskit-terra==0.17.4
     #   qiskit-ignis
 qiskit==0.26.2
     # via -r requirements.in
+qtconsole==5.1.0
+    # via jupyter
+qtpy==1.9.0
+    # via qtconsole
 quandl==3.6.0
     # via qiskit-aqua
 rawpy==0.16.0
@@ -569,10 +661,10 @@ requests-oauthlib==1.3.0
     # via google-auth-oauthlib
 requests==2.25.1
     # via
-    #   autogluon.core
     #   cachecontrol
     #   docplex
     #   fastai
+    #   fastbook
     #   gluoncv
     #   google-api-core
     #   google-cloud-bigquery
@@ -586,6 +678,7 @@ requests==2.25.1
     #   smart-open
     #   spacy
     #   tensorboard
+    #   torchtext
     #   transformers
     #   yfinance
 retworkx==0.8.0
@@ -600,9 +693,7 @@ rsa==4.7.2
     #   awscli
     #   google-auth
 s3transfer==0.4.2
-    # via
-    #   awscli
-    #   boto3
+    # via awscli
 sacremoses==0.0.45
     # via transformers
 scikit-image==0.18.1
@@ -613,14 +704,12 @@ scikit-image==0.18.1
 scikit-learn==0.24.1
     # via
     #   -r requirements.in
-    #   autogluon.core
     #   fastai
     #   qiskit-aqua
 scipy==1.6.1
     # via
     #   -r requirements.in
     #   albumentations
-    #   autogluon.core
     #   coremltools
     #   fastai
     #   gluoncv
@@ -635,6 +724,10 @@ scipy==1.6.1
     #   xgboost
 seaborn==0.11.1
     # via -r requirements.in
+send2trash==1.5.0
+    # via notebook
+sentencepiece==0.1.95
+    # via fastbook
 shapely==1.7.1
     # via imgaug
 simplecv==1.3
@@ -644,8 +737,9 @@ simpleitk==2.0.2
 six==1.15.0
     # via
     #   absl-py
+    #   argon2-cffi
     #   astunparse
-    #   bcrypt
+    #   bleach
     #   coremltools
     #   cycler
     #   dm-tree
@@ -662,7 +756,6 @@ six==1.15.0
     #   jsonschema
     #   keras-preprocessing
     #   protobuf
-    #   pynacl
     #   python-dateutil
     #   quandl
     #   sacremoses
@@ -672,10 +765,9 @@ smart-open==3.0.0
     # via pathy
 sniffio==1.2.0
     # via
+    #   anyio
     #   httpcore
     #   httpx
-sortedcontainers==2.4.0
-    # via distributed
 spacy-legacy==3.0.5
     # via spacy
 spacy==3.0.6
@@ -697,16 +789,12 @@ sympy==1.7.1
     #   coremltools
     #   qiskit-aqua
     #   qiskit-terra
-tblib==1.7.0
-    # via distributed
 tensorboard-data-server==0.6.1
     # via tensorboard
 tensorboard-plugin-wit==1.8.0
     # via tensorboard
 tensorboard==2.5.0
     # via tensorflow
-tensorboardx==2.2
-    # via gluoncv
 tensorflow-estimator==2.5.0
     # via tensorflow
 tensorflow-model-optimization==0.5.0
@@ -715,44 +803,66 @@ tensorflow==2.5.0
     # via -r requirements.in
 termcolor==1.1.0
     # via tensorflow
+terminado==0.10.0
+    # via notebook
+testpath==0.5.0
+    # via nbconvert
 thinc==8.0.3
     # via spacy
 threadpoolctl==2.1.0
     # via scikit-learn
-tifffile==2021.4.8
+tifffile==2021.6.6
     # via scikit-image
 tokenizers==0.10.3
     # via transformers
 toml==0.10.2
     # via autopep8
-toolz==0.11.1
-    # via
-    #   dask
-    #   distributed
-    #   partd
-torch==1.8.1
-    # via
-    #   fastai
-    #   torchvision
-torchsummary==1.5.1
+torch-summary==1.4.2
     # via -r requirements.in
-torchvision==0.9.1
-    # via fastai
+torch==1.8.0+cu111
+    # via
+    #   -r requirements.in
+    #   fastai
+    #   torchaudio
+    #   torchtext
+    #   torchvision
+torchaudio==0.8.0
+    # via -r requirements.in
+torchtext==0.9.0
+    # via -r requirements.in
+torchvision==0.9.0+cu111
+    # via
+    #   -r requirements.in
+    #   fastai
 tornado==6.1
     # via
-    #   autogluon.core
-    #   distributed
+    #   ipykernel
+    #   jupyter-client
+    #   notebook
+    #   terminado
 tqdm==4.61.0
     # via
     #   -r requirements.in
-    #   autogluon.core
     #   coremltools
     #   gluoncv
     #   huggingface-hub
     #   nltk
     #   sacremoses
     #   spacy
+    #   torchtext
     #   transformers
+traitlets==5.0.5
+    # via
+    #   ipykernel
+    #   ipython
+    #   ipywidgets
+    #   jupyter-client
+    #   jupyter-core
+    #   matplotlib-inline
+    #   nbconvert
+    #   nbformat
+    #   notebook
+    #   qtconsole
 transformers==4.6.1
     # via -r requirements.in
 typer==0.3.2
@@ -765,7 +875,7 @@ typing-extensions==3.7.4.3
     #   tensorflow
     #   torch
     #   typing-inspect
-typing-inspect==0.6.0
+typing-inspect==0.7.1
     # via libcst
 uritemplate==3.0.1
     # via google-api-python-client
@@ -778,6 +888,10 @@ wasabi==0.8.2
     # via
     #   spacy
     #   thinc
+wcwidth==0.2.5
+    # via prompt-toolkit
+webencodings==0.5.1
+    # via bleach
 websockets==9.1
     # via qiskit-ibmq-provider
 werkzeug==2.0.1
@@ -789,6 +903,8 @@ wheel==0.36.2
     #   astunparse
     #   tensorboard
     #   tensorflow
+widgetsnbextension==3.5.1
+    # via ipywidgets
 wrapt==1.12.1
     # via tensorflow
 xgboost==1.4.2
@@ -799,8 +915,6 @@ yacs==0.1.8
     # via gluoncv
 yfinance==0.1.55
     # via qiskit-aqua
-zict==2.0.0
-    # via distributed
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
